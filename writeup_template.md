@@ -1,51 +1,38 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Finding Lane Lines on the Road**
-
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
-
-
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
-
+[pipeline]: ./out/design/Pipleline.png "Pipeline"
+[step_output]: ./out/step_outputs.png "Step Output"
 ---
 
 ### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of the following steps:
 
-[image2]: ./out/design/Pipleline.png "Pipeline"
+![alt text][pipeline]
 
-![alt text][image2]
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function as follows:
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+- At first, slope and intercept is calculated
+- Based on slope, lines are separated as left (negative slope) and right (positive slope) lines. Some lines having extreme slope were filtered out to reduce noise.
+- Average slope and intercept are calculated for both left and right lines
+- Average fit line is calculated from line equation
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
+Sample output from each step:
+![alt text][step_output]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
+- It worked almost perfect for straight roads, but not very well for curved roads as in challenge video.
+- The threshold slope to filter out lines is empirical. So overlay lane lines is sometimes not matching actual line in challenge video.
+- Was NOT tested with varying lighting condition, shadow, reflection etc, it may not work well for those cases.
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+- Rather than straight line, the overlay lane line should be improved with curvature based line.
+- To adapt with lighting condition etc, color detection (like white/yellow mark) might give better result.
