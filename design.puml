@@ -1,0 +1,11 @@
+@startuml Pipleline
+    start
+    :grayscale;
+    :gaussian_blur;
+    :Detect edges using Canny edge detection alogorithm;
+    :Detect lines using Hough lines alogorithm;
+    :Separate left and right lines based on slope,
+     find average fit line and create line image;
+    :Overlay lane lines on original image;
+    stop
+@enduml

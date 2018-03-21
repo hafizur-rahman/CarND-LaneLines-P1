@@ -25,6 +25,10 @@ The goals / steps of this project are the following:
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
 
+[image2]: ./out/design/Pipleline.png "Pipeline"
+
+![alt text][image2]
+
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
